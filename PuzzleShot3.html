@@ -28,6 +28,7 @@
     
     var initialized = false;
     
+    // Define a level to be a two-dimensional grid of level.columns by level.rows tiles, that have a certain type
     // Level
     var level = {
         x: 4,           // X position
@@ -146,6 +147,7 @@
         return loadedimages;
     }
     
+    // init() function, we initialize the level.tiles array
     // Initialize the game
     function init() {
         // Load images
@@ -936,9 +938,14 @@
         nextBubble();
     }
     
+    // Generating a level
+    // The level should be filled with tiles of random type
+    // There are no matches or clusters of three or more horizontal or vertical tiles
+    // There should be at least one valid move possible
     // Create a random level
     function createLevel() {
         // Create a level with random tiles
+        // If there was no valid move, the level is unplayable and we generate a new level
         for (var j=0; j<level.rows; j++) {
             var randomtile = randRange(0, bubblecolors-1);
             var count = 0;
